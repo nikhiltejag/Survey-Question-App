@@ -32,7 +32,7 @@ public class UserCommandLineRunner implements CommandLineRunner {
         log.info("Admin Users are: ");
         log.info("-------------------");
 
-        for (User user : repository.findByRole("Admin")) {
+        for (User user : repository.findByRole("User")) {
             log.info(user.toString());
         }
 
