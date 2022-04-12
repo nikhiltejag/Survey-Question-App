@@ -1,6 +1,8 @@
 package com.in28minutes.firstspringbootapplication.controllers;
 
 import org.json.JSONException;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -30,15 +32,19 @@ public class SurveyControllerIT {
     @LocalServerPort
     private int port;
 
+    TestRestTemplate restTemplate = new TestRestTemplate();
+    HttpHeaders headers = new HttpHeaders();
+
+    @BeforeAll
+    public void beforeAll() {
+        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+    }
+
     @Test
     public void testRetrieveQuestion() throws JSONException {
 
-        String url = "http://localhost:" + port + "/surveys/Survey1/questions/Question1";
-
-        TestRestTemplate restTemplate = new TestRestTemplate();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        String retrieveSpecificQuestion = "/surveys/Survey1/questions/Question1";
+        String url = getLocalhostUrl(retrieveSpecificQuestion);
 
         HttpEntity<String> entity = new HttpEntity<String>(null, headers);
 
@@ -49,15 +55,15 @@ public class SurveyControllerIT {
         JSONAssert.assertEquals(expected, response.getBody(), false);
     }
 
+    private String getLocalhostUrl(String retrieveSpecificQuestion) {
+        return "http://localhost:" + port + retrieveSpecificQuestion;
+    }
+
     @Test
     public void testAddQuestion() throws JSONException {
 
-        String url = "http://localhost:" + port + "/surveys/Survey1/questions";
-
-        TestRestTemplate restTemplate = new TestRestTemplate();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        String retrieveAllQuestions = "/surveys/Survey1/questions";
+        String url = getLocalhostUrl(retrieveAllQuestions);
 
         Question question = new Question("doesn't matter", "dummy description", "correctAnswer",
                 Arrays.asList("option1", "option2", "correctAnswer", "option4"));
