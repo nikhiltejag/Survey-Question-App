@@ -1,7 +1,6 @@
 package com.in28minutes.firstspringbootapplication.controllers;
 
 import org.json.JSONException;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,8 +34,8 @@ public class SurveyControllerIT {
     TestRestTemplate restTemplate = new TestRestTemplate();
     HttpHeaders headers = new HttpHeaders();
 
-    @BeforeAll
-    public void beforeAll() {
+    @BeforeEach
+    public void beforeAllMethod() {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
     }
 
