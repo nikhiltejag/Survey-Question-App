@@ -1,4 +1,4 @@
-package com.in28minutes.firstspringbootapplication.controllers;
+package com.in28minutes.survey_question_app.controllers;
 
 import org.json.JSONException;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,11 +21,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Arrays;
 import java.util.List;
 
-import com.in28minutes.firstspringbootapplication.*;
-import com.in28minutes.firstspringbootapplication.model.Question;
+import com.in28minutes.survey_question_app.SurveyQuestionAppApplication;
+import com.in28minutes.survey_question_app.model.Question;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = FirstspringbootapplicationApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = SurveyQuestionAppApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class SurveyControllerIT {
 
     @LocalServerPort

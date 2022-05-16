@@ -1,4 +1,4 @@
-package com.in28minutes.firstspringbootapplication.jpa;
+package com.in28minutes.survey_question_app.jpa;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,7 +32,7 @@ public class UserCommandLineRunner implements CommandLineRunner {
         log.info("Admin Users are: ");
         log.info("-------------------");
 
-        for (User user : repository.findByRole("User")) {
+        for (User user : repository.findByRole("Admin")) {
             log.info(user.toString());
         }
 

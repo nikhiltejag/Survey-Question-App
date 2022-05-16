@@ -1,10 +1,10 @@
-package com.in28minutes.firstspringbootapplication.controllers;
+package com.in28minutes.survey_question_app.controllers;
 
 import java.net.URI;
 import java.util.List;
 
-import com.in28minutes.firstspringbootapplication.model.Question;
-import com.in28minutes.firstspringbootapplication.services.SurveyService;
+import com.in28minutes.survey_question_app.model.Question;
+import com.in28minutes.survey_question_app.services.SurveyService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

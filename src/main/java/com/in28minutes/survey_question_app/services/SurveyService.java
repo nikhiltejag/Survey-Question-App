@@ -1,4 +1,4 @@
-package com.in28minutes.firstspringbootapplication.services;
+package com.in28minutes.survey_question_app.services;
 
 import java.math.BigInteger;
 import java.security.SecureRandom;
@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.in28minutes.firstspringbootapplication.model.Question;
-import com.in28minutes.firstspringbootapplication.model.Survey;
+import com.in28minutes.survey_question_app.model.Question;
+import com.in28minutes.survey_question_app.model.Survey;
 
 import org.springframework.stereotype.Component;
 

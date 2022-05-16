@@ -1,4 +1,4 @@
-package com.in28minutes.firstspringbootapplication.model;
+package com.in28minutes.survey_question_app.model;
 
 import java.util.List;
 

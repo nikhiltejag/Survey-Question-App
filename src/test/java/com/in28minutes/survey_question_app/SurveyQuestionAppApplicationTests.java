@@ -1,10 +1,10 @@
-package com.in28minutes.firstspringbootapplication;
+package com.in28minutes.survey_question_app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FirstspringbootapplicationApplicationTests {
+class SurveyQuestionAppApplicationTests {
 
 	@Test
 	void contextLoads() {

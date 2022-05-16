@@ -1,4 +1,4 @@
-package com.in28minutes.firstspringbootapplication.jpa;
+package com.in28minutes.survey_question_app.jpa;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;

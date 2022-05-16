@@ -1,9 +1,9 @@
-package com.in28minutes.firstspringbootapplication;
+package com.in28minutes.survey_question_app;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.in28minutes.firstspringbootapplication.services.WelcomeService;
+import com.in28minutes.survey_question_app.services.WelcomeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.in28minutes.firstspringbootapplication;
+package com.in28minutes.survey_question_app;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

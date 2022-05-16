@@ -1,4 +1,4 @@
-package com.in28minutes.firstspringbootapplication.controllers;
+package com.in28minutes.survey_question_app.controllers;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,8 +23,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 
-import com.in28minutes.firstspringbootapplication.model.Question;
-import com.in28minutes.firstspringbootapplication.services.SurveyService;
+import com.in28minutes.survey_question_app.model.Question;
+import com.in28minutes.survey_question_app.services.SurveyService;
 
 @ExtendWith(SpringExtension.class)
 // @WebMvcTest(value = SurveyController.class)
