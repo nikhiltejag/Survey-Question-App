@@ -68,7 +68,7 @@ public class SurveyService {
             return null;
 
         for (Question question : survey.getQuestions()) {
-            if (question.getId().equals(questionId))
+            if (question.getId().equalsIgnoreCase(questionId))
                 return question;
         }
 
