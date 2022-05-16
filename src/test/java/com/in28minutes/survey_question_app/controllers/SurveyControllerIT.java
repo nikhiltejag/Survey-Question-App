@@ -14,10 +14,12 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.codec.Base64;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,11 +34,24 @@ public class SurveyControllerIT {
     private int port;
 
     TestRestTemplate restTemplate = new TestRestTemplate();
-    HttpHeaders headers = new HttpHeaders();
+    HttpHeaders headers = createdAuthenticationHeader("user1", "secret1");// new HttpHeaders();
 
     @BeforeEach
     public void beforeAllMethod() {
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+    }
+
+    private HttpHeaders createdAuthenticationHeader(String username, String password) {
+        HttpHeaders headers = new HttpHeaders();
+
+        String auth = username + ":" + password;
+
+		byte[] encodedAuth = Base64.encode(auth.getBytes(Charset.forName("US-ASCII")));
+
+		String headerValue = "Basic " + new String(encodedAuth);
+        headers.add("Authorization", headerValue);
+
+        return headers;
     }
 
     @Test
