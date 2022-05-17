@@ -60,7 +60,7 @@ public class SurveyControllerTest {
         // the World\",\"correctAnswer\":\"Russia\"}";
 
         String expected = "{id:Question1,description:\"Largest Country in the World\",correctAnswer:Russia}";
-        System.out.println(result.getResponse().getContentAsString());
+
         JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
     }
 
