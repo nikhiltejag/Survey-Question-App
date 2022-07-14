@@ -19,6 +19,8 @@ public class UserCommandLineRunner implements CommandLineRunner {
 
         System.out.println("UserCommandLineRunner");
 
+        System.out.println(new User().getId());
+
         repository.save(new User("Nikhil", "Admin"));
         repository.save(new User("Deepak", "Admin"));
         repository.save(new User("Babji", "User"));
