@@ -22,7 +22,7 @@ public class WelcomeController {
     public String welcome() {
         return welcomeMessage.getWelcomeMessage();
     }
-
+ 
     @RequestMapping("/dynamic-configuration")
     public Map returnMap() {
         Map map = new HashMap<>();
