@@ -3,9 +3,6 @@ package com.in28minutes.survey_question_app.controllers;
 import java.net.URI;
 import java.util.List;
 
-import com.in28minutes.survey_question_app.entities.Question;
-import com.in28minutes.survey_question_app.services.SurveyService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.in28minutes.survey_question_app.entities.Question;
+import com.in28minutes.survey_question_app.services.SurveyService;
+
 @RestController
 public class SurveyController {
 
@@ -22,12 +22,12 @@ public class SurveyController {
     public SurveyService surveyService;
 
     @GetMapping("/surveys/{surveyId}/questions")
-    public List<Question> retrieveAllQuestions(@PathVariable String surveyId) {
+    public List<Question> retrieveAllQuestions(@PathVariable int surveyId) {
         return surveyService.retrieveQuestions(surveyId);
     }
 
     @PostMapping("/surveys/{surveyId}/questions")
-    public ResponseEntity<?> addQuestion(@PathVariable String surveyId, @RequestBody Question newQuestion) {
+    public ResponseEntity<?> addQuestion(@PathVariable int surveyId, @RequestBody Question newQuestion) {
 
         Question question = surveyService.addQuestion(surveyId, newQuestion);
 
@@ -41,7 +41,7 @@ public class SurveyController {
     }
 
     @GetMapping("/surveys/{surveyId}/questions/{questionId}")
-    public Question retrieveQuestion(@PathVariable String surveyId, @PathVariable int questionId) {
+    public Question retrieveQuestion(@PathVariable int surveyId, @PathVariable int questionId) {
         return surveyService.retrieveQuestion(surveyId, questionId);
     }
 }

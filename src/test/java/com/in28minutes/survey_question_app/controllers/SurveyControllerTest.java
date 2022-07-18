@@ -1,5 +1,10 @@
 package com.in28minutes.survey_question_app.controllers;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.nio.charset.Charset;
+
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,23 +18,15 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.nio.charset.Charset;
-import java.util.Arrays;
-
 import com.in28minutes.survey_question_app.entities.Question;
 import com.in28minutes.survey_question_app.services.SurveyService;
 
-@ExtendWith(SpringExtension.class)
-// @WebMvcTest(value = SurveyController.class)
+// @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 public class SurveyControllerTest {
@@ -37,7 +34,6 @@ public class SurveyControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    // @MockBean
     @Mock
     private SurveyService surveyService;
 
@@ -47,7 +43,7 @@ public class SurveyControllerTest {
                 "Largest Country in the World", "Russia", 
                         "India", "Russia", "United States", "China");
 
-        Mockito.when(surveyService.retrieveQuestion(Mockito.anyString(), Mockito.anyInt())).thenReturn(mockQuestion);
+        Mockito.when(surveyService.retrieveQuestion(Mockito.anyInt(), Mockito.anyInt())).thenReturn(mockQuestion);
         
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .get("http://localhost:8081/surveys/Survey1/questions/Question1")
@@ -76,7 +72,7 @@ public class SurveyControllerTest {
 
         String questionJSON = "{\"description\":\"Smallest Number\",\"correctAnswer\":\"1\",\"options\":[\"1\",\"2\",\"3\",\"4\"]}";
 
-        Mockito.when(surveyService.addQuestion(Mockito.anyString(), Mockito.any(Question.class)))
+        Mockito.when(surveyService.addQuestion(Mockito.anyInt(), Mockito.any(Question.class)))
                 .thenReturn(mockQuestion);
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders.post(

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,6 +32,21 @@ public class Question {
     @Column(name = "option_c")
     private String optionC;
 
-    @Column(name = "optionD")
+    @Column(name = "option_d")
     private String optionD;
+
+    @ManyToOne()
+    private Survey survey;
+
+    public Question(int id, String description, String correctAnswer, String optionA, String optionB, String optionC,
+            String optionD) {
+        this.id = id;
+        this.description = description;
+        this.correctAnswer = correctAnswer;
+        this.optionA = optionA;
+        this.optionB = optionB;
+        this.optionC = optionC;
+        this.optionD = optionD;
+    }
+
 }
