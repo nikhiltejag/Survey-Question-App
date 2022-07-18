@@ -1,7 +1,4 @@
-package com.in28minutes.survey_question_app;
-
-import java.util.HashMap;
-import java.util.Map;
+package com.in28minutes.survey_question_app.controllers;
 
 import com.in28minutes.survey_question_app.services.WelcomeService;
 
@@ -15,22 +12,9 @@ public class WelcomeController {
     @Autowired
     private WelcomeService welcomeMessage;
 
-    @Autowired
-    private BasicConfiguration configuration;
-
     @RequestMapping("/welcome")
     public String welcome() {
         return welcomeMessage.getWelcomeMessage();
     }
- 
-    @RequestMapping("/dynamic-configuration")
-    public Map returnMap() {
-        Map map = new HashMap<>();
 
-        map.put("value", configuration.isValue());
-        map.put("message", configuration.getMessage());
-        map.put("number", configuration.getNumber());
-
-        return map;
-    }
 }

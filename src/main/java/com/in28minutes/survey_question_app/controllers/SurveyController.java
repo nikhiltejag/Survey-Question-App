@@ -3,7 +3,7 @@ package com.in28minutes.survey_question_app.controllers;
 import java.net.URI;
 import java.util.List;
 
-import com.in28minutes.survey_question_app.model.Question;
+import com.in28minutes.survey_question_app.entities.Question;
 import com.in28minutes.survey_question_app.services.SurveyService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class SurveyController {
     }
 
     @GetMapping("/surveys/{surveyId}/questions/{questionId}")
-    public Question retrieveQuestion(@PathVariable String surveyId, @PathVariable String questionId) {
+    public Question retrieveQuestion(@PathVariable String surveyId, @PathVariable int questionId) {
         return surveyService.retrieveQuestion(surveyId, questionId);
     }
 }

@@ -1,10 +1,13 @@
-package com.in28minutes.survey_question_app.jpa;
+package com.in28minutes.survey_question_app.runners;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import com.in28minutes.survey_question_app.entities.User;
+import com.in28minutes.survey_question_app.repository.UserRepository;
 
 @Component
 public class UserCommandLineRunner implements CommandLineRunner {
@@ -21,10 +24,8 @@ public class UserCommandLineRunner implements CommandLineRunner {
 
         System.out.println(new User().getId());
 
-        repository.save(new User("Nikhil", "Admin"));
-        repository.save(new User("Deepak", "Admin"));
-        repository.save(new User("Babji", "User"));
-        repository.save(new User("3nadh", "User"));
+        repository.save(new User("Nikhil", "Admin", "nikhil"));
+        repository.save(new User("Deepak", "User", "deepak"));
 
         for (User user : repository.findAll()) {
             log.info(user.toString());

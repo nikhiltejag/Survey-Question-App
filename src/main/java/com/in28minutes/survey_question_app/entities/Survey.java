@@ -1,4 +1,4 @@
-package com.in28minutes.survey_question_app.model;
+package com.in28minutes.survey_question_app.entities;
 
 import java.util.List;
 

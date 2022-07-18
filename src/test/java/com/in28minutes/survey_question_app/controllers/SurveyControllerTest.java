@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 
-import com.in28minutes.survey_question_app.model.Question;
+import com.in28minutes.survey_question_app.entities.Question;
 import com.in28minutes.survey_question_app.services.SurveyService;
 
 @ExtendWith(SpringExtension.class)
@@ -43,11 +43,11 @@ public class SurveyControllerTest {
 
     @Test
     public void testRetrieveQuestion() throws Exception {
-        Question mockQuestion = new Question("Question1",
-                "Largest Country in the World", "Russia", Arrays.asList(
-                        "India", "Russia", "United States", "China"));
+        Question mockQuestion = new Question(14,
+                "Largest Country in the World", "Russia", 
+                        "India", "Russia", "United States", "China");
 
-        Mockito.when(surveyService.retrieveQuestion(Mockito.anyString(), Mockito.anyString())).thenReturn(mockQuestion);
+        Mockito.when(surveyService.retrieveQuestion(Mockito.anyString(), Mockito.anyInt())).thenReturn(mockQuestion);
         
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .get("http://localhost:8081/surveys/Survey1/questions/Question1")
@@ -72,7 +72,7 @@ public class SurveyControllerTest {
 
 @Test
     public void createSurveyQuestion() throws Exception {
-        Question mockQuestion = new Question("1", "Just a question", "1", Arrays.asList("1", "2", "3", "4"));
+        Question mockQuestion = new Question(13, "Just a question", "1", "1", "2", "3", "4");
 
         String questionJSON = "{\"description\":\"Smallest Number\",\"correctAnswer\":\"1\",\"options\":[\"1\",\"2\",\"3\",\"4\"]}";
 

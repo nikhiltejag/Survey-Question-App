@@ -6,29 +6,33 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.in28minutes.survey_question_app.model.Question;
-import com.in28minutes.survey_question_app.model.Survey;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.in28minutes.survey_question_app.entities.Question;
+import com.in28minutes.survey_question_app.entities.Survey;
+import com.in28minutes.survey_question_app.repository.QuestionRepository;
 
 @Component
 public class SurveyService {
 
+    @Autowired
+    private QuestionRepository qRepository;
+
     private static List<Survey> surveys = new ArrayList<>();
 
     static {
-        Question question1 = new Question("Question1",
-                "Largest Country in the World", "Russia", Arrays.asList(
-                        "India", "Russia", "United States", "China"));
-        Question question2 = new Question("Question2",
-                "Most Populus Country in the World", "China", Arrays.asList(
-                        "India", "Russia", "United States", "China"));
-        Question question3 = new Question("Question3",
-                "Highest GDP in the World", "United States", Arrays.asList(
-                        "India", "Russia", "United States", "China"));
-        Question question4 = new Question("Question4",
-                "Second largest english speaking country", "India", Arrays
-                        .asList("India", "Russia", "United States", "China"));
+        Question question1 = new Question(1,
+                "Largest Country in the World", "Russia",
+                "India", "Russia", "United States", "China");
+        Question question2 = new Question(2,
+                "Most Populus Country in the World", "China",
+                "India", "Russia", "United States", "China");
+        Question question3 = new Question(3,
+                "Highest GDP in the World", "United States",
+                "India", "Russia", "United States", "China");
+        Question question4 = new Question(4,
+                "Second largest english speaking country", "India", "India", "Russia", "United States", "China");
 
         List<Question> questions = new ArrayList<>(Arrays.asList(question1,
                 question2, question3, question4));
@@ -60,7 +64,7 @@ public class SurveyService {
         return survey.getQuestions();
     }
 
-    public Question retrieveQuestion(String surveyId, String questionId) {
+    public Question retrieveQuestion(String surveyId, int questionId) {
 
         Survey survey = retrieveSurvey(surveyId);
 
@@ -68,7 +72,7 @@ public class SurveyService {
             return null;
 
         for (Question question : survey.getQuestions()) {
-            if (question.getId().equalsIgnoreCase(questionId))
+            if (question.getId() == questionId)
                 return question;
         }
 
@@ -81,11 +85,10 @@ public class SurveyService {
 
         Survey survey = retrieveSurvey(surveyId);
 
-        String randomId = new BigInteger(130, random).toString(32);
+        int randomId = new BigInteger(130, random).intValue();
         question.setId(randomId);
 
         survey.getQuestions().add(question);
 
         return question;
-    }
-}
+    }}

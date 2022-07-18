@@ -24,7 +24,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.in28minutes.survey_question_app.SurveyQuestionAppApplication;
-import com.in28minutes.survey_question_app.model.Question;
+import com.in28minutes.survey_question_app.entities.Question;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = SurveyQuestionAppApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -79,8 +79,8 @@ public class SurveyControllerIT {
         String retrieveAllQuestions = "/surveys/Survey1/questions";
         String url = getLocalhostUrl(retrieveAllQuestions);
 
-        Question question = new Question("doesn't matter", "dummy description", "correctAnswer",
-                Arrays.asList("option1", "option2", "correctAnswer", "option4"));
+        Question question = new Question(1, "dummy description", "correctAnswer",
+                "option1", "option2", "correctAnswer", "option4");
 
         HttpEntity<Question> entity = new HttpEntity<Question>(question, headers);
 
