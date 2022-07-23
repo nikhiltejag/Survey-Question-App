@@ -18,7 +18,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception{
 
-        http.httpBasic().and().authorizeRequests()
+        http.httpBasic().and().cors().and().authorizeRequests()
         .antMatchers("/welcome").permitAll()
         .antMatchers("/surveys/**").hasRole("USER")
         .antMatchers("/users/**").hasRole("USER")
